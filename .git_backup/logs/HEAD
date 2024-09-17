@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 27279b04f9bf2bad7342bba2881da7e8c3c45d3c Your Name <rumen@anotherdragon.com> 1726338451 +0000	clone: from github.com:another-dragon/lp-appaz.git
+27279b04f9bf2bad7342bba2881da7e8c3c45d3c 27279b04f9bf2bad7342bba2881da7e8c3c45d3c Your Name <rumen@anotherdragon.com> 1726338812 +0000	reset: moving to HEAD
+27279b04f9bf2bad7342bba2881da7e8c3c45d3c 4ba386bb628a452e4abc4d51808fd6ecc5e8f96b Your Name <rumen@anotherdragon.com> 1726338813 +0000	pull: Fast-forward
+4ba386bb628a452e4abc4d51808fd6ecc5e8f96b b5e18f3b9b84bd2e0fe9abade376ea9a4f8992a9 Your Name <rumen@anotherdragon.com> 1726339041 +0000	pull: Fast-forward
+b5e18f3b9b84bd2e0fe9abade376ea9a4f8992a9 b5e18f3b9b84bd2e0fe9abade376ea9a4f8992a9 Your Name <rumen@anotherdragon.com> 1726339722 +0000	reset: moving to HEAD
+b5e18f3b9b84bd2e0fe9abade376ea9a4f8992a9 6e1b1cbbfec6b5e73cd3572b2801b78457ff3e7a Your Name <rumen@anotherdragon.com> 1726339723 +0000	pull: Fast-forward
+6e1b1cbbfec6b5e73cd3572b2801b78457ff3e7a 6e1b1cbbfec6b5e73cd3572b2801b78457ff3e7a Your Name <rumen@anotherdragon.com> 1726340038 +0000	reset: moving to HEAD
+6e1b1cbbfec6b5e73cd3572b2801b78457ff3e7a 2c4e443f5038295b1cb72c29ab3a044b29dda433 Your Name <rumen@anotherdragon.com> 1726340039 +0000	pull: Fast-forward
+2c4e443f5038295b1cb72c29ab3a044b29dda433 2c4e443f5038295b1cb72c29ab3a044b29dda433 Your Name <rumen@anotherdragon.com> 1726411418 +0000	reset: moving to HEAD
+2c4e443f5038295b1cb72c29ab3a044b29dda433 f73bff132eae4785ec96c6640dc7295c1759dbe3 Your Name <rumen@anotherdragon.com> 1726411419 +0000	pull origin master: Fast-forward
+f73bff132eae4785ec96c6640dc7295c1759dbe3 30403541736c24ba99538ceff1d8a881bea31001 Your Name <rumen@anotherdragon.com> 1726416223 +0000	pull: Fast-forward
+30403541736c24ba99538ceff1d8a881bea31001 c388620a7ac1129d3cbf91cab2db4f78090c7959 Your Name <rumen@anotherdragon.com> 1726467308 +0000	commit: Committing latest changes to the main branch
+c388620a7ac1129d3cbf91cab2db4f78090c7959 2f0343dee41f3e0a22e7a10909d7aee7fcfed207 Your Name <rumen@anotherdragon.com> 1726542682 +0000	commit: Removed the venv dir
+2f0343dee41f3e0a22e7a10909d7aee7fcfed207 2f0343dee41f3e0a22e7a10909d7aee7fcfed207 Your Name <rumen@anotherdragon.com> 1726543241 +0000	reset: moving to HEAD
