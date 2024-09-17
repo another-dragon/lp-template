@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # watchtower:
+  #   image: containrrr/watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   restart: unless-stopped
+  #   command:
+  #     - "--label-enable"
+  #     - "--interval"
+  #     - "30"
+  #     - "--rolling-restart"
+  #   networks:
+  #     - tfn
+  lp-appaz-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - tfn
+    # ports:
+    #   - "5432:5432"
+
+  lp-appaz-web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:9000
+    volumes:
+      - .:/code
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lp-appaz-web.rule=Host(`lp-appaz.com`) || Host(`www.lp-appaz.com`)"
+      - "traefik.http.routers.lp-appaz-web.entrypoints=websecure"
+      - "traefik.http.routers.lp-appaz-web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.lp-appaz-web.loadbalancer.server.port=9000"
+      - "com.centurylinklabs.watchtower.enable=true"
+    networks:
+      - tfn
+    depends_on:
+      - lp-appaz-db
+
+volumes:
+  postgres_data:
+
+networks:
+  tfn:
+    external: true
