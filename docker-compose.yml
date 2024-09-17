@@ -1,49 +1,41 @@
 version: "3.8"
 
 services:
-  # watchtower:
-  #   image: containrrr/watchtower
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   restart: unless-stopped
-  #   command:
-  #     - "--label-enable"
-  #     - "--interval"
-  #     - "30"
-  #     - "--rolling-restart"
-  #   networks:
-  #     - tfn
-  lp-appaz-db:
-    image: postgres
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    networks:
-      - tfn
-    # ports:
-    #   - "5432:5432"
-
-  lp-appaz-web:
+  web:
     build: .
-    command: python manage.py runserver 0.0.0.0:9000
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/code
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.lp-appaz-web.rule=Host(`lp-appaz.com`) || Host(`www.lp-appaz.com`)"
-      - "traefik.http.routers.lp-appaz-web.entrypoints=websecure"
-      - "traefik.http.routers.lp-appaz-web.tls.certresolver=letsencrypt"
-      - "traefik.http.services.lp-appaz-web.loadbalancer.server.port=9000"
-      - "com.centurylinklabs.watchtower.enable=true"
-    networks:
-      - tfn
+      - .:/app
+    ports:
+      - "${WEB_PORT:-8000}:8000"
     depends_on:
-      - lp-appaz-db
+      - db
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+
+  tailwind:
+    build: .
+    command: sh -c "npm install && python manage.py tailwind start"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
 
 volumes:
   postgres_data:
-
-networks:
-  tfn:
-    external: true
+    driver: local

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}You are connected{% endblock %}
+{% block content %}
+    <div class="min-h-screen w-full flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <div class="p-8 flex flex-col items-center text-center">
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Success</div>
+                <h1 class="block mt-1 text-lg leading-tight font-medium text-black">You are connected</h1>
+                <p class="mt-2 text-gray-500">Welcome, {{ user.first_name }}! You have successfully connected to the WiFi network.</p>
+                <div class="mt-6">
+                    <a href="{% url 'splash_page' %}"
+                       class="inline-block px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Back to Splash Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
